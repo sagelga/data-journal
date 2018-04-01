@@ -39,6 +39,7 @@ library(stringr)
 
 food_world_cup
 ```
+
 ```{r}
 # Showing statistics
 summary(food_world_cup)
@@ -47,8 +48,38 @@ summary(food_world_cup)
 
 # 3 Creating reports
 ```{r}
+#ggplot(data=subset(gapminder, (year==2007) & (country=="Thailand" | country=="Singapore"| country=="Japan")
+b2 <- ggplot(data=subset(food_world_cup, (algeria!="N/A")), aes(x=algeria, fill=gender)) +
+        geom_bar() +
+        labs(x="Country", y="Population", title="Population of Japan, Singapore, and Thailand in 2007")
 
+b2
+```
 
+```{r}
+b2 <- ggplot(data=subset(food_world_cup, (china!="N/A")), aes(x=china, fill=gender)) +
+        geom_bar() +
+        labs(x="China Score", y="Count by Gender", title="China Cuisine score by gender")
+
+b2
+```
+
+```{r}
+b2 <- ggplot(data=subset(subset(food_world_cup, (thailand!="N/A")),location!="NA"), aes(x=location, fill=thailand)) +
+        geom_bar(position = "fill") +
+        labs(x="thailand Score", y="Count by Gender", title="China Cuisine score by gender") +
+    theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+b2
+```
+
+```{r}
+b2 <- ggplot(data=subset(subset(food_world_cup, (thailand!="N/A")),location!="NA"), aes(x=location, fill=thailand)) +
+        geom_bar(position = "fill") +
+        labs(x="thailand Score", y="Count by Gender", title="China Cuisine score by gender") +
+    theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+b2
 ```
 
 # 4 Answer resolved
