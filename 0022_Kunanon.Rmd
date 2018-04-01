@@ -59,11 +59,47 @@ Code block provided by FiveThirtyEight
 
 ## 2.2 Showing tibbles
 ```{r}
-airline_safety_tidy
+airline_safety
 ```
 
 # 3 Creating reports
+```{r}
+s1 <- ggplot(data=airline_safety[airline_safety$incl_reg_subsidiaries == TRUE,], aes(x=avail_seat_km_per_week,y=incidents_85_99)) +
+        # add  alpha parameter
+        geom_point(alpha = 1) +
+        labs(x="avail_seat_km_per_week", y="incidents_85_99")
 
+s1
+
+s1 <- ggplot(data=airline_safety[airline_safety$incl_reg_subsidiaries == FALSE,], aes(x=avail_seat_km_per_week,y=incidents_85_99)) +
+        # add  alpha parameter
+        geom_point(alpha = 1) +
+        labs(x="avail_seat_km_per_week", y="incidents_85_99")
+
+s1
+
+s2 <- ggplot(data=airline_safety, aes(x=avail_seat_km_per_week,y=incidents_00_14)) +
+        # add  alpha parameter
+        geom_point(alpha = 1) +
+        labs(x="avail_seat_km_per_week", y="incidents_00_14")
+
+s2
+
+s2 <- ggplot(data=airline_safety[airline_safety$incl_reg_subsidiaries == TRUE,], aes(x=avail_seat_km_per_week,y=incidents_00_14)) +
+        # add  alpha parameter
+        geom_point(alpha = 1) +
+        labs(x="avail_seat_km_per_week", y="incidents_00_14")
+
+s2
+
+s2 <- ggplot(data=airline_safety[airline_safety$incl_reg_subsidiaries == FALSE,], aes(x=avail_seat_km_per_week,y=incidents_00_14)) +
+        # add  alpha parameter
+        geom_point(alpha = 1) +
+        labs(x="avail_seat_km_per_week", y="incidents_00_14")
+
+s2
+
+```
 # 4 Answer resolved
 ```{r Thai Airway Safety}
 
