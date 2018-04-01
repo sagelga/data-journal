@@ -76,15 +76,26 @@ b2
 ```{r}
 b2 <- ggplot(data=subset(subset(food_world_cup, (thailand!="N/A")),location!="NA"), aes(x=location, fill=thailand)) +
         geom_bar(position = "fill") +
-        labs(x="thailand Score", y="Count by Gender", title="China Cuisine score by gender") +
+        labs(x="Location", y="Percentage of score", title="Thai Cuisine score by location") +
     theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
 b2
 ```
 
-# 4 Answer resolved
 ```{r}
+b2 <- ggplot(data=subset(subset(food_world_cup, thailand!="N/A"),location=="New England"), aes(x=age, fill=thailand)) +
+        geom_bar(position = "fill") +
+        labs(x="Age Range", y="Percentage", title="Thai Cusine score by age") +
+    theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
+b2
+
+b2 <- ggplot(data=subset(subset(food_world_cup, thailand!="N/A"),location=="New England"), aes(x=gender, fill=thailand)) +
+        geom_bar(position = "fill") +
+        labs(x="Gender", y="Percentage", title="Thai Cuisine score by gender") +
+    theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+b2
 ```
 
 ```{r}
