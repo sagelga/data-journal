@@ -15,7 +15,9 @@ Data is collected by FiveThirtyEight; a journal that shows the data they collect
 The dataset is from FiveThirtyEight. They are openly share their dataset here : https://data.fivethirtyeight.com<br>
 But this project download a dataset from `FiveThirtyEight` package in R.
 
-# <img src="https://png.icons8.com/material/50/000000/brief.png"> Project Initiation
+`.gitignore` is forked from https://github.com/github/gitignore.
+
+# ![](https://png.icons8.com/material/50/000000/brief.png) Project Initiation
 This project is part of Probability and Statistics (06016203)
 
 Assistant Teacher : <br>
