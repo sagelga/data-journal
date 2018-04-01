@@ -4,12 +4,13 @@ output: html_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
 
-## Installing packages
-# install.packages("fivethirtyeight")
-# install.packages("tidyverse")
-# install.packages("gapminder")
+# Install a package (if needed)
+if (!require("fivethirtyeight")) install.packages("fivethirtyeight"); 
+if (!require("tidyverse")) install.packages("tidyverse"); 
+if (!require("gapminder")) install.packages("gapminder"); 
+if (!require("knitr")) install.packages("knitr"); 
+if (!require("tidyr")) install.packages("tidyr"); 
 ```
 
 รายงานการทำ Data Visualization <br>
@@ -22,7 +23,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 หากต้องการเห็นวิธีการโหลด Package กรุณาตั้งค่า debug เป็น `TRUE`
 ```{r debug_mode}
-debug = FALSE
+debug = TRUE
 ```
 
 # 1 Initiating packages
@@ -34,23 +35,21 @@ library(stringr)
 ```
 
 # 2 Introduction to the dataset
-```{r Package Help, include=FALSE}
+```{r Package Help, include=debug}
 
-?food_world_cup
+food_world_cup
 ```
-
-## 2.1 Scrubbing raw data
-```{r include=debug}
-source('data-scrubber.R', local = TRUE, echo = TRUE)
-```
-Code block provided by FiveThirtyEight
-
-## 2.2 Showing tibbles
 ```{r}
-#food_world_cup_tidy
+# Showing statistics
+summary(food_world_cup)
+
 ```
 
 # 3 Creating reports
+```{r}
+
+
+```
 
 # 4 Answer resolved
 ```{r}
