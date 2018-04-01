@@ -18,10 +18,7 @@ knitr::opts_chunk$set(echo = TRUE)
 เซคชัน อังคารเช้า<br>
 
 คำถามที่ต้องการหา   <br>
-1. สายการบินของไทย มีความปลอดภัยมากหรือไม่ และปลอดภัยมากกว่าสายการบินอื่นๆมากเพียงใด
-2. แต่ละสายการบิน มีการพัฒนาด้านความปลอดภัยของเครื่องบินมากขื้นหรือไม่<br>
-3. สายการบินของทวีปใด มีอัตราการเกิดอุบัติเหตุสูงที่สุด<br>
-4. หากต้องการบินตรงจากประเทศไทย ไปสู่เมือง โตเกียวประเทศญี่ปุ่น ด้วยความปลอดภัย ควรเลือกสายการบินใด<br>
+1.
 
 หากต้องการเห็นวิธีการโหลด Package กรุณาตั้งค่า debug เป็น `TRUE`
 ```{r debug_mode}
@@ -29,63 +26,42 @@ debug = FALSE
 ```
 
 # 1 Initiating packages
-```{r init, include=debug}
+```{r init, include=debug, message=debug}
 library(tidyverse)
 library(gapminder)
 library(fivethirtyeight)
 library(stringr)
 ```
 
-# 2 Visualizing raw data
+# 2 Introduction to the dataset
 ```{r Package Help, include=FALSE}
-library(fivethirtyeight)
 
-?airline_safety
+?food_world_cup
 ```
 
 ## 2.1 Scrubbing raw data
-```{r}
-# To convert data frame to tidy data (long) format, run:
-
-airline_safety_tidy <- airline_safety %>%
-  gather(type, count, -c(airline, incl_reg_subsidiaries, avail_seat_km_per_week)) %>%
-  mutate(
-    period = str_sub(type, start=-5),
-    period = str_replace_all(period, "_", "-"),
-    type = str_sub(type, end=-7)
-  )
+```{r include=debug}
+source('data-scrubber.R', local = TRUE, echo = TRUE)
 ```
 Code block provided by FiveThirtyEight
 
 ## 2.2 Showing tibbles
 ```{r}
-airline_safety_tidy
+#food_world_cup_tidy
 ```
 
 # 3 Creating reports
 
 # 4 Answer resolved
-```{r Thai Airway Safety}
+```{r}
 
 ```
 
-```{r Airline Safety Improvements}
+```{r}
 
 ```
-
-
-สายการบินไปเมืองโตเกียว ประเทศญี่ปุ่นนั้น มีเจ้าที่ทำการบินดังนี้
-Air China
-ANA
-Cathey Pacifitc
-
-https://www.skyscanner.net/transport/flights/bkkt/tyoa/180330/180331?adults=1&children=0&adultsv2=1&childrenv2=&infants=0&cabinclass=economy&rtn=1&preferdirects=true&outboundaltsenabled=false&inboundaltsenabled=false&ref=flights_seo_landing_page#results
 
 # References <br>
 Data Reference <br>
 https://cran.r-project.org/web/packages/fivethirtyeight/index.htmlช้า<br>
-https://fivethirtyeight.com/features/should-travelers-avoid-flying-airlines-that-have-had-crashes-in-the-past/
 
-Airlines-related Referenceช้า<br>
-https://aviation-safety.netช้า<br>
-http://www.nationsonline.org/oneworld/major_airlines.htm

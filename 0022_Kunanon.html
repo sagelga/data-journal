@@ -123,44 +123,21 @@ $(document).ready(function () {
 
 
 <p>รายงานการทำ Data Visualization <br> ชื่อ คุณานนต์ ศรีสันติโรจน์<br> รหัสนักศึกษา 59070022<br> เซคชัน อังคารเช้า<br></p>
-<p>คำถามที่ต้องการหา <br> 1. สายการบินของไทย มีความปลอดภัยมากหรือไม่ และปลอดภัยมากกว่าสายการบินอื่นๆมากเพียงใด 2. แต่ละสายการบิน มีการพัฒนาด้านความปลอดภัยของเครื่องบินมากขื้นหรือไม่<br> 3. สายการบินของทวีปใด มีอัตราการเกิดอุบัติเหตุสูงที่สุด<br> 4. หากต้องการบินตรงจากประเทศไทย ไปสู่เมือง โตเกียวประเทศญี่ปุ่น ด้วยความปลอดภัย ควรเลือกสายการบินใด<br></p>
+<p>คำถามที่ต้องการหา <br> 1.</p>
 <p>หากต้องการเห็นวิธีการโหลด Package กรุณาตั้งค่า debug เป็น <code>TRUE</code></p>
 <pre class="r"><code>debug = FALSE</code></pre>
 <div id="initiating-packages" class="section level1">
 <h1>1 Initiating packages</h1>
 </div>
-<div id="visualizing-raw-data" class="section level1">
-<h1>2 Visualizing raw data</h1>
+<div id="introduction-to-the-dataset" class="section level1">
+<h1>2 Introduction to the dataset</h1>
 <div id="scrubbing-raw-data" class="section level2">
 <h2>2.1 Scrubbing raw data</h2>
-<pre class="r"><code># To convert data frame to tidy data (long) format, run:
-
-airline_safety_tidy &lt;- airline_safety %&gt;%
-  gather(type, count, -c(airline, incl_reg_subsidiaries, avail_seat_km_per_week)) %&gt;%
-  mutate(
-    period = str_sub(type, start=-5),
-    period = str_replace_all(period, &quot;_&quot;, &quot;-&quot;),
-    type = str_sub(type, end=-7)
-  )</code></pre>
 <p>Code block provided by FiveThirtyEight</p>
 </div>
 <div id="showing-tibbles" class="section level2">
 <h2>2.2 Showing tibbles</h2>
-<pre class="r"><code>airline_safety_tidy</code></pre>
-<pre><code>## # A tibble: 336 x 6
-##    airline       incl_reg_subsidia… avail_seat_km_per… type   count period
-##    &lt;chr&gt;         &lt;lgl&gt;                           &lt;dbl&gt; &lt;chr&gt;  &lt;int&gt; &lt;chr&gt; 
-##  1 Aer Lingus    FALSE                      320906734. incid…     2 85-99 
-##  2 Aeroflot      TRUE                      1197672318. incid…    76 85-99 
-##  3 Aerolineas A… FALSE                      385803648. incid…     6 85-99 
-##  4 Aeromexico    TRUE                       596871813. incid…     3 85-99 
-##  5 Air Canada    FALSE                     1865253802. incid…     2 85-99 
-##  6 Air France    FALSE                     3004002661. incid…    14 85-99 
-##  7 Air India     TRUE                       869253552. incid…     2 85-99 
-##  8 Air New Zeal… TRUE                       710174817. incid…     3 85-99 
-##  9 Alaska Airli… TRUE                       965346773. incid…     5 85-99 
-## 10 Alitalia      FALSE                      698012498. incid…     7 85-99 
-## # ... with 326 more rows</code></pre>
+<pre class="r"><code>#food_world_cup_tidy</code></pre>
 </div>
 </div>
 <div id="creating-reports" class="section level1">
@@ -168,13 +145,10 @@ airline_safety_tidy &lt;- airline_safety %&gt;%
 </div>
 <div id="answer-resolved" class="section level1">
 <h1>4 Answer resolved</h1>
-<p>สายการบินไปเมืองโตเกียว ประเทศญี่ปุ่นนั้น มีเจ้าที่ทำการบินดังนี้ Air China ANA Cathey Pacifitc</p>
-<p><a href="https://www.skyscanner.net/transport/flights/bkkt/tyoa/180330/180331?adults=1&amp;children=0&amp;adultsv2=1&amp;childrenv2" class="uri">https://www.skyscanner.net/transport/flights/bkkt/tyoa/180330/180331?adults=1&amp;children=0&amp;adultsv2=1&amp;childrenv2</a>=&amp;infants=0&amp;cabinclass=economy&amp;rtn=1&amp;preferdirects=true&amp;outboundaltsenabled=false&amp;inboundaltsenabled=false&amp;ref=flights_seo_landing_page#results</p>
 </div>
 <div id="references" class="section level1">
 <h1>References <br></h1>
-<p>Data Reference <br> <a href="https://cran.r-project.org/web/packages/fivethirtyeight/index.htmlช้า" class="uri">https://cran.r-project.org/web/packages/fivethirtyeight/index.htmlช้า</a><br> <a href="https://fivethirtyeight.com/features/should-travelers-avoid-flying-airlines-that-have-had-crashes-in-the-past/" class="uri">https://fivethirtyeight.com/features/should-travelers-avoid-flying-airlines-that-have-had-crashes-in-the-past/</a></p>
-<p>Airlines-related Referenceช้า<br> <a href="https://aviation-safety.netช้า" class="uri">https://aviation-safety.netช้า</a><br> <a href="http://www.nationsonline.org/oneworld/major_airlines.htm" class="uri">http://www.nationsonline.org/oneworld/major_airlines.htm</a></p>
+<p>Data Reference <br> <a href="https://cran.r-project.org/web/packages/fivethirtyeight/index.htmlช้า" class="uri">https://cran.r-project.org/web/packages/fivethirtyeight/index.htmlช้า</a><br></p>
 </div>
 
 
