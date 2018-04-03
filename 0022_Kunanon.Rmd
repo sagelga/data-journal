@@ -3,12 +3,6 @@ title: "0022_Kunanon"
 output: html_document
 ---
 
-```{r setup, include=FALSE}
-
-# Install a package (if needed)
-source('package-downloader.R')
-```
-
 รายงานการทำ Data Visualization <br>
 ชื่อ คุณานนต์ ศรีสันติโรจน์<br>
 รหัสนักศึกษา 59070022<br>
@@ -17,18 +11,19 @@ source('package-downloader.R')
 คำถามที่ต้องการหา   <br>
 1.
 
-หากต้องการเห็นวิธีการโหลด Package กรุณาตั้งค่า debug เป็น `TRUE`
-```{r debug_mode}
-debug = TRUE
-```
+# 1 Checking for mandatory packages
+```{r Markdown Package Checker}
+# It will only install a package THAT IS NOT IN USER COMPUTER.
 
-# 1 Initiating packages
-```{r init, include=debug, message=debug}
-source('package-loader.R')
+if (!require("fivethirtyeight"))    install.packages("fivethirtyeight");
+if (!require("tidyverse"))          install.packages("tidyverse");
+if (!require("gapminder"))          install.packages("gapminder");
+if (!require("knitr"))              install.packages("knitr");
+if (!require("lintr"))              install.packages("lintr");
 ```
 
 # 2 Introduction to the dataset
-```{r Package Help, include=debug}
+```{r Package Help}
 
 food_world_cup
 ```
@@ -39,37 +34,57 @@ summary(food_world_cup)
 
 ```
 
-# 3 Creating reports
-```{r include=debug}
-source('gender-algeria_bargraph.R')
-```
+# 3 Search for solution
 
-```{r include=debug}
-source('age-thai_bargraph.R')
-```
+```{r Thai Score by location}
+    # Filtering the data from food_world_cup with no null data set from location or thailand
+b2 <- ggplot(data = subset(subset(food_world_cup, thailand != "N/A"),
+                         location == "New England"),
+             # Using the data age as x-axis and thailand as y-axis
+             aes(x = age, fill = thailand)) +
 
-```{r}
-b2 <- ggplot(data=subset(subset(food_world_cup, (thailand!="N/A")),location!="NA"), aes(x=location, fill=thailand)) +
-        geom_bar(position = "fill") +
-        labs(x="Location", y="Percentage of score", title="Thai Cuisine score by location") +
-    theme(axis.text.x = element_text(angle = 45, hjust = 1))
+    # Create Stacked Bar Graph
+    geom_bar(position = "fill") +
 
-b2
-```
-
-```{r}
-b2 <- ggplot(data=subset(subset(food_world_cup, thailand!="N/A"),location=="New England"), aes(x=age, fill=thailand)) +
-        geom_bar(position = "fill") +
-        labs(x="Age Range", y="Percentage", title="Thai Cusine score by age") +
-    theme(axis.text.x = element_text(angle = 45, hjust = 1))
+    # Lable for the Bar Graph
+    labs(x = "Age Range",
+         y = "Percentage",
+         title = "Thai Cusine score by age")
 
 b2
 ```
 
-```{r}
-b2 <- ggplot(data=subset(subset(food_world_cup, thailand!="N/A"),location=="New England"), aes(x=gender, fill=thailand)) +
+```{r Thai score by age, with data from top location}
+    # Filtering data from food_world_cup with no null dataset and location is 'New England'
+b2 <- ggplot(data=subset(subset(food_world_cup, thailand!="N/A"),
+                         location == "New England"),
+            # Using the data age as x-axis and thailand as y-axis          
+             aes(x = age, fill = thailand)) +
+
+# Create Stacked Bar Graph
         geom_bar(position = "fill") +
-        labs(x="Gender", y="Percentage", title="Thai Cuisine score by gender") +
+
+# Lable for the Bar Graph
+        labs(x = "Age Range",
+             y = "Percentage",
+             title = "Thai Cusine score by age")
+
+b2
+```
+
+```{r Thai score by gender, with data from gender location}
+    # Filtering data from food_world_cup with no null dataset and location is 'New England'
+b2 <- ggplot(data = subset(subset(food_world_cup, thailand != "N/A"),
+                         location == "New England"),
+             # Using the data gender as x-axis and thailand as y-axis
+             aes(x = gender, fill = thailand)) +
+
+    geom_bar(position = "fill") +
+
+    labs(x = "Gender",
+         y = "Percentage",
+         title = "Thai Cuisine score by gender") +
+
     theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
 b2
@@ -80,6 +95,5 @@ Data Reference <br>
 https://cran.r-project.org/web/packages/fivethirtyeight/index.html<br>
 
 Code Reference<br>
-Creating stack bar graph http://rstudio-pubs-static.s3.amazonaws.com/3256_bb10db1440724dac8fa40da5e658ada5.html<br>
-Left data text alignment https://www.statmethods.net/advgraphs/axes.html
-
+Creating stack bar graph <br>http://rstudio-pubs-static.s3.amazonaws.com/3256_bb10db1440724dac8fa40da5e658ada5.html<br>
+Left data text alignment <br>https://www.statmethods.net/advgraphs/axes.html
