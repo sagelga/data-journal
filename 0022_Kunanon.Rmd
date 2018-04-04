@@ -3,15 +3,22 @@ title: "0022_Kunanon"
 output: html_document
 ---
 
-รายงานการทำ Data Visualization <br>
-ชื่อ คุณานนต์ ศรีสันติโรจน์<br>
-รหัสนักศึกษา 59070022<br>
-เซคชัน อังคารเช้า<br>
+Data Analysis Report <br>
+Creator : Kunanon Srisuntiroj<br>
+Student ID : 59070022<br>
+Tuesday Morning Section
 
-คำถามที่ต้องการหา   <br>
-1.
+In United Kingdom, there is a lot of varieties of cousines and we cannot find out where should we locate a resteraunt.<br>
+Thai cousine is one of the exotic food cousines in the world, but we still can't figured out where should we place down a resteraunt.<br>
+To find out, we use data from surveys to extract on what they liked and planned ahead for maximum profit and constant eaters.
+
+Question from the data :
+1. Where should a Thai resteraunt open at
+2. What's the target group for that Thai resteraunt
 
 # 1 Checking for mandatory packages
+A computer that does not install a package yet, it will install a package.<br>
+Package that have been installed will be skipped.
 ```{r Markdown Package Checker}
 # It will only install a package THAT IS NOT IN USER COMPUTER.
 
@@ -24,20 +31,14 @@ if (!require("lintr"))              install.packages("lintr");
 
 # 2 Introduction to the dataset
 ```{r Package Help}
-
+# Show the data tibble of the dataset `food_world_cup`
 food_world_cup
 ```
 
-```{r}
-# Showing statistics
-summary(food_world_cup)
-
-```
-
 # 3 Search for solution
-
+Starts with getting the data from the dataset and find which town loves Thai food the most
 ```{r Thai Score by location}
-    # Filtering the data from food_world_cup with no null data set from location or thailand
+      # Filtering the data from food_world_cup with no null data set from location or thailand
 b2 <- ggplot(data = subset(subset(food_world_cup, thailand != "N/A"),
                          location == "New England"),
              # Using the data age as x-axis and thailand as y-axis
