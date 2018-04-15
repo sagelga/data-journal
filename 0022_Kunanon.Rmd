@@ -8,7 +8,7 @@ Creator : Kunanon Srisuntiroj<br>
 Student ID : 59070022<br>
 Tuesday Morning Section
 
-In United Kingdom, there is a lot of varieties of cousines and we cannot find out where should we locate a resteraunt.<br>
+In United Kingdom, there is a lot of varieties of cousines and we cannot find out where shall we open a Thai resteraunt.<br>
 Thai cousine is one of the exotic food cousines in the world, but we still can't figured out where should we place down a resteraunt.<br>
 To find out, we use data from surveys to extract on what they liked and planned ahead for maximum profit and constant eaters.
 
@@ -26,7 +26,6 @@ if (!require("fivethirtyeight"))    install.packages("fivethirtyeight");
 if (!require("tidyverse"))          install.packages("tidyverse");
 if (!require("gapminder"))          install.packages("gapminder");
 if (!require("knitr"))              install.packages("knitr");
-if (!require("lintr"))              install.packages("lintr");
 ```
 
 # 2 Introduction to the dataset
@@ -54,6 +53,16 @@ b2 <- ggplot(data = subset(subset(food_world_cup, thailand != "N/A"),
 
 b2
 ```
+In the previous bar graph, it can say that people in New England really enjoyed Thai food.<br>
+
+```{r Average score based on location}
+# Creating a table that shows the location
+#colMeans(food_world_cup[["thailand"]])
+
+```
+
+Which means that opening at New England will attract most people to eat Thai food. <br>
+But in this data, we would like to see which age range enjoys the food.
 
 ```{r Thai score by age, with data from top location}
     # Filtering data from food_world_cup with no null dataset and location is 'New England'
@@ -73,6 +82,7 @@ b2 <- ggplot(data=subset(subset(food_world_cup, thailand!="N/A"),
 b2
 ```
 
+and checking at the gender of the eater.
 ```{r Thai score by gender, with data from gender location}
     # Filtering data from food_world_cup with no null dataset and location is 'New England'
 b2 <- ggplot(data = subset(subset(food_world_cup, thailand != "N/A"),
@@ -91,9 +101,19 @@ b2 <- ggplot(data = subset(subset(food_world_cup, thailand != "N/A"),
 b2
 ```
 
+# Conclusions
+When about to open a Thai resteraunt, there is a good chance that open at New England is the best deal.<br>
+Main customer will be a middle-age Female. <br>
+
+Other locations like "" comes in second. As the strong demand of "love", USA have a very strong bond with Thai cusine.<br>
+
+
 # References <br>
 Data Reference <br>
 https://cran.r-project.org/web/packages/fivethirtyeight/index.html<br>
+https://fivethirtyeight.com/features/what-is-americans-favorite-global-cuisine/<br>
+https://fivethirtyeight.com/features/the-fivethirtyeight-international-food-associations-2014-world-cup/<br>
+https://github.com/fivethirtyeight/data/tree/master/food-world-cup<br>
 
 Code Reference<br>
 Creating stack bar graph <br>http://rstudio-pubs-static.s3.amazonaws.com/3256_bb10db1440724dac8fa40da5e658ada5.html<br>
