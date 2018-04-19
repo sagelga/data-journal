@@ -8,17 +8,19 @@ Creator : Kunanon Srisuntiroj<br>
 Student ID : 59070022<br>
 Tuesday Morning Section
 
-In United Kingdom, there is a lot of varieties of cousines and we cannot find out where shall we open a Thai resteraunt.<br>
-Thai cousine is one of the exotic food cousines in the world, but we still can't figured out where should we place down a resteraunt.<br>
-To find out, we use data from surveys to extract on what they liked and planned ahead for maximum profit and constant eaters.
+In United States of America, there is a lot of varieties of cuisine, which each Americans from each location might not have the same food preferences. The problem is that, we cannot find out where should we open a Thai resteraunt at which area.
 
-Question from the data :
-1. Where should a Thai resteraunt open at
+Thai cuisines is not an American food nor European. As we are talking, we need to make sure that putting a resteraunt there will generate a profit. But we need more information about the customers also.
+
+To find out, we use data from FiveThirtyThree that have surveys thousands of customers all around America.
+
+Question from the data : <br>
+1. Where should a Thai resteraunt open at<br>
 2. What's the target group for that Thai resteraunt
 
-# 1 Checking for mandatory packages
-A computer that does not install a package yet, it will install a package.<br>
-Package that have been installed will be skipped.
+# 1 Installing mandatory packages
+Package that is not have been installed on the computer will be downloaded.<br>
+Package that have been installed will be skipped instead.
 ```{r Markdown Package Checker}
 # It will only install a package THAT IS NOT IN USER COMPUTER.
 
@@ -29,44 +31,44 @@ if (!require("knitr"))              install.packages("knitr");
 ```
 
 # 2 Introduction to the dataset
+Showing the dataset `food_world_cup` in table
 ```{r Package Help}
 # Show the data tibble of the dataset `food_world_cup`
 food_world_cup
 ```
+<br>Which is mostly a customer information and their ratings on the scale of 1 (as not favorable) to 5 (most favorable).
 
 # 3 Search for solution
-Starts with getting the data from the dataset and find which town loves Thai food the most
+Starts with getting the data from the dataset and find which area in US loves Thai food the most
 ```{r Thai Score by location}
-      # Filtering the data from food_world_cup with no null data set from location or thailand
+# Filtering the data from food_world_cup with no null data set from location or thailand
 b2 <- ggplot(data = subset(subset(food_world_cup, thailand != "N/A"),
-                         location == "New England"),
-             # Using the data age as x-axis and thailand as y-axis
-             aes(x = age, fill = thailand)) +
+                           location != "NA"),
+             aes(x = location, fill = thailand)) +
 
-    # Create Stacked Bar Graph
+    # Create a stack bar graph
     geom_bar(position = "fill") +
 
-    # Lable for the Bar Graph
-    labs(x = "Age Range",
-         y = "Percentage",
-         title = "Thai Cusine score by age")
+    # Lable a stack bar graph
+    labs(x = "Location",
+         y = "Percentile",
+         title = "Thai cuisine score by location",
+         subtitle = "Based on a scale of 1 to 5 points given to Thai food. 
+People who does not vote at Thailand is excluded.") +
+
+    # Align a lable to 45 degrees + adjust a lable location
+    theme(axis.text.x = element_text(angle = 45,
+                                     hjust = 1))
 
 b2
 ```
-In the previous bar graph, it can say that people in New England really enjoyed Thai food.<br>
+<br>The bar graph visualizes that people in New England really enjoyed Thai food.<br>
+So we will dig down with the data on "Which type of people really loved Thai food".
 
-```{r Average score based on location}
-# Creating a table that shows the location
-#colMeans(food_world_cup[["thailand"]])
-
-```
-
-Which means that opening at New England will attract most people to eat Thai food. <br>
-But in this data, we would like to see which age range enjoys the food.
-
+This graph will shows which age range from New England loves Thai Food. 
 ```{r Thai score by age, with data from top location}
-    # Filtering data from food_world_cup with no null dataset and location is 'New England'
-b2 <- ggplot(data=subset(subset(food_world_cup, thailand!="N/A"),
+# Filtering data from food_world_cup with no null dataset and location is 'New England'
+b1 <- ggplot(data=subset(subset(food_world_cup, thailand!="N/A"),
                          location == "New England"),
             # Using the data age as x-axis and thailand as y-axis          
              aes(x = age, fill = thailand)) +
@@ -74,39 +76,46 @@ b2 <- ggplot(data=subset(subset(food_world_cup, thailand!="N/A"),
 # Create Stacked Bar Graph
         geom_bar(position = "fill") +
 
-# Lable for the Bar Graph
+# Label for the Bar Graph
         labs(x = "Age Range",
              y = "Percentage",
-             title = "Thai Cusine score by age")
+             title = "Thai Cusine score by age",
+             subtitle = "Based on a scale of 1 to 5 points given to Thai food. 
+People who does not vote at Thailand is excluded.")
 
-b2
+b1
 ```
+<br>This can conclude that people age between 18-29 enjoyed Thai food the most.
 
-and checking at the gender of the eater.
+
+So another question is that "which gender from 18-29 and lives in New England loves Thai cuisine the most?".
 ```{r Thai score by gender, with data from gender location}
-    # Filtering data from food_world_cup with no null dataset and location is 'New England'
-b2 <- ggplot(data = subset(subset(food_world_cup, thailand != "N/A"),
+# Filtering data from food_world_cup with no null dataset and location is 'New England'
+b3 <- ggplot(data = subset(subset(subset(food_world_cup, thailand != "N/A"),
                          location == "New England"),
-             # Using the data gender as x-axis and thailand as y-axis
+                         age == "18-29"),
+             
+             # Using gender as x-axis and thailand as y-axis
              aes(x = gender, fill = thailand)) +
-
+    
+    # Create a stack bar graph
     geom_bar(position = "fill") +
 
+    # Label a stack bar graph
     labs(x = "Gender",
          y = "Percentage",
-         title = "Thai Cuisine score by gender") +
+         title = "Thai Cuisine score by gender",
+         subtitle = "Based on a scale of 1 to 5 points given to Thai food. 
+People who does not vote at Thailand is excluded.")
 
-    theme(axis.text.x = element_text(angle = 45, hjust = 1))
-
-b2
+b3
 ```
 
 # Conclusions
 When about to open a Thai resteraunt, there is a good chance that open at New England is the best deal.<br>
-Main customer will be a middle-age Female. <br>
+Main customer ages about 18-29 Female. <br>
 
-Other locations like "" comes in second. As the strong demand of "love", USA have a very strong bond with Thai cusine.<br>
-
+With this data, we can safely sure that New England does have a lot of strong demand in Thai food. This confirms by the Google review made by user in New England area.
 
 # References <br>
 Data Reference <br>
